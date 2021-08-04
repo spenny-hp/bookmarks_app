@@ -68,14 +68,19 @@ app.get("/bookmarks/:cat", async (req, res, next) => {
     <button><a href='../'>BACK TO BOOKMARKS</a></button>
     <h1> 
     ${Object.entries(categoryCounts)
-        .map(
-          (cat) => `
+      .map(
+        (cat) => `
           ${cat[0].charAt(0).toUpperCase() + cat[0].slice(1)} (${cat[1]})`
-        )
-        .join("")}
+      )
+      .join("")}
     </h1>
     <ul>
-        ${links.map(link => `<li><a href=${link.URL} target="_blank" rel="noopener noreferrer">${link.name}</a></li>`).join('')}
+        ${links
+          .map(
+            (link) =>
+              `<li><a href=${link.URL} target="_blank" rel="noopener noreferrer">${link.name}</a></li>`
+          )
+          .join("")}
     </ul>
     </body>
     </html>`;
